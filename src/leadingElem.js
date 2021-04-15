@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-module.exports.leadCol = (x, y) => {
+module.exports.leadCol = (x, y, matrix) => {
     console.log('Optimality test...')
     if (x < 0 && y < 0) {
         if (Math.abs(x) > Math.abs(y)) {
@@ -15,6 +15,7 @@ module.exports.leadCol = (x, y) => {
     } else {
         console.log(chalk.blue(
             'There are no negative values in the index row. Therefore, this table determines the optimal task plan.'));
+        console.log(chalk.green(`Zopt = ${matrix[0][5]}`))
         return null;
     }
 }
