@@ -1,4 +1,7 @@
+const chalk = require('chalk');
+
 module.exports.leadCol = (x, y) => {
+    console.log('Optimality test...')
     if (x < 0 && y < 0) {
         if (Math.abs(x) > Math.abs(y)) {
             return {elem: x, index: 0};
@@ -10,7 +13,8 @@ module.exports.leadCol = (x, y) => {
     } else if (x >= 0 && y < 0){
         return {elem: y, index: 1};
     } else {
-        console.log('Все оптимально!');
+        console.log(chalk.blue(
+            'There are no negative values in the index row. Therefore, this table determines the optimal task plan.'));
         return null;
     }
 }
@@ -23,7 +27,7 @@ module.exports.leadRow = (obj) => {
             arr.push({item, index})
         }
     })
-    console.log(`Let's divide our elements and choose the minimum...`);
+    console.log(`Let's divide our elements and choose the minimum(Only if above zero)...`);
 
     let newArr = []
     obj.B.map((item, index) => {

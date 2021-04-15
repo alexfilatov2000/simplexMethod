@@ -25,7 +25,7 @@ module.exports.newMatrix = (matrix, leadRow, leadCol) => {
     }
 
     console.table(newMatrix);
-    console.log(`Теперь используем правило прямоугольников...`);
+    console.log(`Now we will use the rectangle rule...`);
 
     for (let i = 0; i < newMatrix.length; i++) {
         for (let j = 0; j < newMatrix[i].length; j++) {

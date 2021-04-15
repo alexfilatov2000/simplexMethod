@@ -1,15 +1,17 @@
 let {matrix} = require('./data')
 const {leadCol, leadRow} = require('./leadingElem');
-const {newMatrix} = require('./renderNewMatrix')
-const {out} = require('./out')
-
+const {newMatrix} = require('./renderNewMatrix');
+const {out} = require('./out');
+const {getBasisCols} = require('./getBasisCol')
 
 let main = () => {
     let col = leadCol(matrix[0][0], matrix[0][1])
+    let Idx = getBasisCols(matrix);
+    out(matrix);
     while (col !== null) {
-        out(matrix);
-        console.log('Определяем ведущую колонку...');
-        console.log(`Смотрим какой елемент(обязательно меньше нуля) больше по модулю (${matrix[0][0]}; ${matrix[0][1]})...`);
+
+        console.log('Choose the leading column...');
+        console.log(`Let's see which element(only below zero) is greater in modulus (${matrix[0][Idx[0]]}; ${matrix[0][Idx[1]]})...`);
         console.log(`So |${col.elem}| is bigger, choose the column by index ${col.index}`);
         console.log(`\nChoose the leading row...`)
 
@@ -25,14 +27,9 @@ let main = () => {
         console.log(`Let's build new matrix...`)
 
         matrix = newMatrix(matrix, row.index+1, col.index);
-        col = leadCol(matrix[0][0], matrix[0][1])
+        Idx = getBasisCols(matrix);
+        col = leadCol(matrix[0][Idx[0]], matrix[0][Idx[1]])
     }
 }
 
 main()
-
-
-
-
-
-
